@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\domin\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\domin\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_MasAPI.1852909632.00" t="ExcludeRecursive" />
+    <e p="C:\Users\domin\RiderProjects\MasAPI" t="IncludeFlat">
+      <e p="MasAPI" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Configuration" t="Include">
+          <e p="AccessoryEfConfiguration.cs" t="Include" />
+          <e p="AddressEfConfiguration.cs" t="Include" />
+          <e p="CoachEfConfiguration.cs" t="Include" />
+          <e p="FanEfConfiguration.cs" t="Include" />
+          <e p="FieldEfConfiguration.cs" t="Include" />
+          <e p="MatchEfConfiguration.cs" t="Include" />
+          <e p="PersonEfConfiguration.cs" t="Include" />
+          <e p="PlayerEfConfiguration.cs" t="Include" />
+          <e p="RefereeEfConfiguration.cs" t="Include" />
+          <e p="TeamEfConfiguration.cs" t="Include" />
+          <e p="TicketEfConfiguration.cs" t="Include" />
+          <e p="TrainingEfConfiguration.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="FieldsController.cs" t="Include" />
+          <e p="MatchesController.cs" t="Include" />
+          <e p="TeamsController.cs" t="Include" />
+          <e p="TrainingsController.cs" t="Include" />
+        </e>
+        <e p="DTOs" t="Include">
+          <e p="Requests" t="Include">
+            <e p="AccessoriesRequest.cs" t="Include" />
+            <e p="FieldRequest.cs" t="Include" />
+            <e p="MatchRequest.cs" t="Include" />
+            <e p="TeamRequest.cs" t="Include" />
+            <e p="TrainingRequest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="MasAPI.csproj" t="IncludeRecursive" />
+        <e p="Migrations" t="Include">
+          <e p="20210613021529_InitialCommitWithModelsAndRelations.cs" t="Include" />
+          <e p="20210613021529_InitialCommitWithModelsAndRelations.Designer.cs" t="Include" />
+          <e p="DataBaseContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Accessory.cs" t="Include" />
+          <e p="Address.cs" t="Include" />
+          <e p="Coach.cs" t="Include" />
+          <e p="CoachCategories.cs" t="Include" />
+          <e p="CreationStages.cs" t="Include" />
+          <e p="DataBaseContext.cs" t="Include" />
+          <e p="Fan.cs" t="Include" />
+          <e p="Field.cs" t="Include" />
+          <e p="Leagues.cs" t="Include" />
+          <e p="Match.cs" t="Include" />
+          <e p="Person.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+          <e p="Predispoitions.cs" t="Include" />
+          <e p="Referee.cs" t="Include" />
+          <e p="Team.cs" t="Include" />
+          <e p="Ticket.cs" t="Include" />
+          <e p="Training.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="MasAPI.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="FieldDataBaseService.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IFIeldDataBaseService.cs" t="Include" />
+            <e p="IMatchDataBaseService.cs" t="Include" />
+            <e p="ITeamDataBaseService.cs" t="Include" />
+            <e p="ITrainingDataBaseService.cs" t="Include" />
+          </e>
+          <e p="MatchDataBaseService.cs" t="Include" />
+          <e p="TeamDataBaseService.cs" t="Include" />
+          <e p="TrainingDataBaseService.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="MasAPI.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
