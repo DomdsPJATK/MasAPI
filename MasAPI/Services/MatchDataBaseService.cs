@@ -13,6 +13,11 @@ namespace MasAPI.Services
     {
         private readonly DataBaseContext _context;
 
+        public MatchDataBaseService(DataBaseContext context)
+        {
+            _context = context;
+        }
+
         public async Task<IActionResult> Get()
         {
             return new OkObjectResult(await _context.Matches.ToListAsync());
@@ -38,35 +43,59 @@ namespace MasAPI.Services
             
             if(team == null || field == null) return new NotFoundResult(); //Walidacja czy team i boisko istnieją
             
+            //Znajdowanie max id meczu
+            int matchId = 1;
+            if (await _context.Matches.AnyAsync()) matchId = await _context.Matches.MaxAsync(p => p.MatchId) + 1;
+            
             var match = new Match()
             {
+                MatchId = matchId,
                 TeamId = request.TeamId,
                 FieldId = request.TeamId,
                 EnemyName = request.EnemyName,
                 DateSince = request.DateSince,
                 DateUntil = request.DateUntil,
-                Status = creationStages
+                Status = creationStages,
+                Team = team,
+                Field = field
             };
 
             await _context.AddAsync(match);
             await _context.SaveChangesAsync();
             
-            return new OkResult();
+            return new OkObjectResult(matchId);
         }
 
         public async Task<IActionResult> AddRefereeToMatchById(int idMatch, int idReferee)
         {
             var referee = await _context.Referees.FirstOrDefaultAsync(o => o.PersonId == idReferee);
             var match = await _context.Matches.FirstOrDefaultAsync(o => o.MatchId == idMatch);
-            
-            if(referee == null || match == null) return new NotFoundResult(); //Walidacja czy sedzia lub mecz istnieje
 
+            if(referee == null || match == null) return new NotFoundResult(); //Walidacja czy sedzia lub mecz istnieje
+            
             match.Referee = referee;
 
             await _context.SaveChangesAsync();
 
             return new OkResult();
 
+        }
+
+        public async Task<IActionResult> ChangeStatus(ChangeStatusRequest request)
+        {
+            if (!Enum.IsDefined(typeof(CreationStages), request.Status)) return new BadRequestResult(); //Walidacja czy wartosc w enumie o nazwie {value} istnieje.
+
+            CreationStages creationStages = (CreationStages) Enum.Parse(typeof(CreationStages), request.Status);
+            
+            var match = await _context.Matches.FirstOrDefaultAsync(o => o.MatchId == request.MatchId);
+            
+            if(match == null) return new NotFoundResult(); //Walidacja czy mecz istnieje
+
+            match.Status = creationStages;
+            
+            await _context.SaveChangesAsync();
+            
+            return new OkResult();
         }
     }
 }

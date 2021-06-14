@@ -11,6 +11,11 @@ namespace MasAPI.Services
     {
         private readonly DataBaseContext _context;
 
+        public TrainingDataBaseService(DataBaseContext context)
+        {
+            _context = context;
+        }
+
         public async Task<IActionResult> Get()
         {
             return new OkObjectResult(await _context.Trainings.ToListAsync());
@@ -33,12 +38,19 @@ namespace MasAPI.Services
             
             if(team == null || field == null) return new NotFoundResult(); //Walidacja czy team i boisko istnieją
             
+            //Znajdowanie max id treningu
+            int trainingId = 1;
+            if (await _context.Trainings.AnyAsync()) trainingId = await _context.Trainings.MaxAsync(p => p.TrainingId) + 1; 
+            
             var training = new Training()
             {
+                TrainingId = trainingId,
                 TeamId = request.TeamId,
                 FieldId = request.FieldId,
                 DateSince = request.DateSince,
-                DateUntil = request.DateUntil
+                DateUntil = request.DateUntil,
+                Team = team,
+                Field = field
             };
 
             await _context.AddAsync(training);

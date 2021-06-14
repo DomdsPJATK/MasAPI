@@ -35,6 +35,12 @@ namespace MasAPI.Controllers
         {
             return await _service.Get(idField);
         }
+
+        [HttpPost("terms")]
+        public async Task<IActionResult> GetTermsForDate(TermsRequest request)
+        {
+            return await _service.GetTermsForDate(request);
+        }
         
     }
 }

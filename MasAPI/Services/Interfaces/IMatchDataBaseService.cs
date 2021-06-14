@@ -11,5 +11,6 @@ namespace MasAPI.Services.Interfaces
         public Task<IActionResult> Get(int id);
         public Task<IActionResult> Create(MatchRequest request);
         public Task<IActionResult> AddRefereeToMatchById(int idMatch, int idReferee);
+        public Task<IActionResult> ChangeStatus(ChangeStatusRequest request);
     }
 }

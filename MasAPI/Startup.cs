@@ -28,11 +28,21 @@ namespace MasAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
+            //Wstrzykiwanie zaleznosci do serwisow
             services.AddScoped<ITeamDataBaseService,  TeamDataBaseService>();
             services.AddScoped<IFieldDataBaseService, FieldDataBaseService>();
             services.AddScoped<IMatchDataBaseService, MatchDataBaseService>();
             services.AddScoped<ITrainingDataBaseService, TrainingDataBaseService>();
+            
+            //Nadawanie uprawnien cors do API
+            services.AddCors(o => o.AddPolicy("LowCorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+                
             services.AddDbContext<DataBaseContext>();
             services.AddControllers();
             services.AddSwaggerGen();
@@ -52,11 +62,13 @@ namespace MasAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Football Club Management System");
             });
 
+            app.UseCors("LowCorsPolicy");
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

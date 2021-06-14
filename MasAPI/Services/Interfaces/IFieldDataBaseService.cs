@@ -9,5 +9,6 @@ namespace MasAPI.Services.Interfaces
         public Task<IActionResult> Get();
         public Task<IActionResult> Get(int id);
         public Task<IActionResult> Create(FieldRequest request);
+        public Task<IActionResult> GetTermsForDate(TermsRequest request);
     }
 }

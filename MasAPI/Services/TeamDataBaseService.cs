@@ -12,6 +12,11 @@ namespace MasAPI.Services
     {
         private readonly DataBaseContext _context;
 
+        public TeamDataBaseService(DataBaseContext context)
+        {
+            _context = context;
+        }
+
         public async Task<IActionResult> Get()
         {
             return new OkObjectResult(await _context.Teams.ToListAsync());

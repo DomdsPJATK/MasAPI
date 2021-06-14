@@ -31,10 +31,15 @@
         <e p="DTOs" t="Include">
           <e p="Requests" t="Include">
             <e p="AccessoriesRequest.cs" t="Include" />
+            <e p="ChangeStatusRequest.cs" t="Include" />
             <e p="FieldRequest.cs" t="Include" />
             <e p="MatchRequest.cs" t="Include" />
             <e p="TeamRequest.cs" t="Include" />
+            <e p="TermsRequest.cs" t="Include" />
             <e p="TrainingRequest.cs" t="Include" />
+          </e>
+          <e p="Responses" t="Include">
+            <e p="TermsResponse.cs" t="Include" />
           </e>
         </e>
         <e p="MasAPI.csproj" t="IncludeRecursive" />
